@@ -7,5 +7,9 @@ import com.capgemini.start.domain.entity.Tipo;
 
 @Repository
 public interface TipoRepository extends JpaRepository<Tipo, Long>{
+	
+	boolean existsByDescricaoIgnoreCase(String descricao);
+	
+	boolean existsByIdNotAndDescricaoIgnoreCaseAnd(Long id, String descricao);
 
 }
