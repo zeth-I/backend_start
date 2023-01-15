@@ -1,4 +1,4 @@
-package com.capgemini.start.api.dto;
+package com.capgemini.start.api.dto.output;
 
 import java.time.LocalDateTime;
 

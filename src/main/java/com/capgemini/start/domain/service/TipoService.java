@@ -43,7 +43,7 @@ public class TipoService extends AbstractService<Tipo, Long> {
 	
 	@Override
 	public Tipo update(Tipo tipo) {
-		if (this.repository.existsByIdNotAndDescricaoIgnoreCaseAnd(tipo.getId(), tipo.getDescricao())) {
+		if (this.repository.existsByIdNotAndDescricaoIgnoreCase(tipo.getId(), tipo.getDescricao())) {
 			throw new ObjectAlreadyExistsException("Já existe outro tipo com esta descrição.");
 		}
 		return this.repository.save(tipo);

@@ -10,6 +10,6 @@ public interface TipoRepository extends JpaRepository<Tipo, Long>{
 	
 	boolean existsByDescricaoIgnoreCase(String descricao);
 	
-	boolean existsByIdNotAndDescricaoIgnoreCaseAnd(Long id, String descricao);
+	boolean existsByIdNotAndDescricaoIgnoreCase(Long id, String descricao);
 
 }
