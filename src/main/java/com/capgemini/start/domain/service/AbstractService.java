@@ -8,7 +8,7 @@ import com.capgemini.start.domain.service.exceptions.ObjectNotFoundException;
 
 public abstract class AbstractService <T, ID>{
 	
-	public abstract JpaRepository<T, ID> getRepository();
+	protected abstract JpaRepository<T, ID> getRepository();
 	
 	public T findById(ID id) {
 		return getRepository().findById(id).orElseThrow(() -> new ObjectNotFoundException("Objeto encontrado"));
@@ -23,6 +23,9 @@ public abstract class AbstractService <T, ID>{
 	}
 	
 	public void delete(ID id) {
+		if (!getRepository().existsById(id)) {
+			throw new ObjectNotFoundException("Objeto encontrado");
+		}
 		getRepository().deleteById(id);
 	}
 	

@@ -1,5 +1,6 @@
 package com.capgemini.start.domain.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -19,7 +20,7 @@ public class TipoService extends AbstractService<Tipo, Long> {
 	private final TipoRepository repository;
 	
 	@Override
-	public JpaRepository<Tipo, Long> getRepository() {
+	protected JpaRepository<Tipo, Long> getRepository() {
 		return this.repository;
 	}
 	
@@ -38,6 +39,7 @@ public class TipoService extends AbstractService<Tipo, Long> {
 		if (this.repository.existsByDescricaoIgnoreCase(tipo.getDescricao())){
 			throw new ObjectAlreadyExistsException("Já existe um tipo com esta descrição.");
 		}
+		tipo.setDataCriacao(new Date());
 		return this.repository.save(tipo);
 	}
 	
@@ -46,6 +48,7 @@ public class TipoService extends AbstractService<Tipo, Long> {
 		if (this.repository.existsByIdNotAndDescricaoIgnoreCase(tipo.getId(), tipo.getDescricao())) {
 			throw new ObjectAlreadyExistsException("Já existe outro tipo com esta descrição.");
 		}
+		tipo.setDataAlteracao(new Date());
 		return this.repository.save(tipo);
 	}
 

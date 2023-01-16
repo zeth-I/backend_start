@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,16 +24,13 @@ public class Tipo {
 	@EqualsAndHashCode.Include
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@NotNull
-	@Column(name = "id_tipo")
+	@Column(name = "id_tipo", nullable = false)
 	private Long id;
 	
-	@NotNull
-	@Column(name ="ds_tipo")
+	@Column(name ="ds_tipo", nullable = false, length = 100)
 	private String descricao;
 	
-	@NotNull
-	@Column(name = "dt_criacao")
+	@Column(name = "dt_criacao", nullable = false)
 	private Date dataCriacao;
 	
 	@Column(name = "dt_alteracao")
