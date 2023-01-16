@@ -12,8 +12,6 @@ import com.capgemini.start.domain.entity.Tipo;
 @Mapper(componentModel = "spring")
 public interface TipoMapper {
 
-	//TipoMapper INSTANCE = Mappers.getMapper(TipoMapper.class);
-
 	TipoDTO toDTO(Tipo tipo);
 
 	@Mapping(target = "id", ignore = true)
